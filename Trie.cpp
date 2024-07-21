@@ -41,8 +41,8 @@ class Trie {
         
         void insert(string word) {
             node* head=root;
-            for(char c:word)
-                if(!head->iskeyexists(c)){
+            for(char c:word){
+                if(!head->iskeyexists(c))
                     head->createkey(c,new node);
                 head=head->getkeynode(c);
             }
