@@ -126,6 +126,7 @@ class SegTree{
 int main(){
     ll t, n, type, l, r, i, val, q;
     cin>>t;
+    cout<<t;
     while(t--){
         cin>>n>>q;
         ll arr[n];

@@ -4,8 +4,7 @@ using namespace std;
 #define ll long long
 #define ull unsigned long long
 
-class Helper
-{
+class Helper{
 public:
     static void countInInterval(vector<pair<ll, ll>> &intervals, ll ans[], ll n)
     {
@@ -19,5 +18,22 @@ public:
         }
         for (int i = 1; i < n; i++)
             ans[i] += ans[i - 1];
+    }
+
+    static ll bin_pow(ll x, ll n, ll mod)
+    {
+        x %= mod;
+        ll res = 1;
+
+        while (n > 0)
+        {
+            if (n % 2)
+            {
+                res = res * x % mod;
+            }
+            x = x * x % mod;
+            n /= 2;
+        }
+        return res;
     }
 };
