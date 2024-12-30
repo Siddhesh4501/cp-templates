@@ -6,7 +6,7 @@ using namespace std;
 
 class Helper{
 public:
-    static void countInInterval(vector<pair<ll, ll>> &intervals, ll ans[], ll n)
+    static void countTotalIntervalOverlapAtPosition(vector<pair<ll, ll>> &intervals, ll ans[], ll n)
     {
         for (int i = 0; i < n; i++)
             ans[i] = 0;
