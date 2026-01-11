@@ -13,22 +13,25 @@ class PrimeAndFactors{
     ll n;
     vector<bool> prime;
     vector<ll> LCF;
+    vector<ll> LargeCF;
     vector<ll> primeNumbers;
     
     void updatePrime(){
         prime[0] = prime[1] = false;
-        LCF[0] = 0, LCF[1] = 1;
-        for(ll i = 2; i * i <= n; i++){
+        LCF[0] = 0, LCF[1] = 1, LargeCF[1] = 1;
+        for(ll i = 2; i <= n; i++){
             if(prime[i]){
-                for(ll j = i * i; j <= n; j += i){
+                for(ll j = i + i; j <= n; j += i){
                     prime[j] = false;
                     LCF[j] = min(LCF[j], i);
+                    LargeCF[j] = max(LargeCF[j], i);
                 }
             }
         }
         for(ll i = 0; i <= n; i++){
             if(prime[i]){
                 LCF[i] = i;
+                LargeCF[i] = i;
                 primeNumbers.push_back(i);   
             }
         }
@@ -39,6 +42,7 @@ class PrimeAndFactors{
         this->n = max(n, 2LL);
         this->prime = vector<bool>(this->n + 1, true);
         this->LCF = vector<ll>(this->n + 1, this->n + 5);
+        this->LargeCF = vector<ll>(this->n + 1, -1);
         this->updatePrime();
     }
     
@@ -49,6 +53,11 @@ class PrimeAndFactors{
     ll getLCF(ll num){
         
         return this->LCF[num];
+    }
+    
+    ll getLargeCF(ll num){
+        
+        return this->LargeCF[num];
     }
     
     vector<ll> getAllPrimeNumbers(){
